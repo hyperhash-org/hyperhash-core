@@ -1,0 +1,17 @@
+[Unit]
+Description=HyperHash Core (SV1/SV2 + Template/Jobs/Submit)
+After=network-online.target postgresql.service redis-server.service
+Wants=network-online.target
+
+[Service]
+User=hyperhash
+Group=hyperhash
+WorkingDirectory=/opt/hyperhash
+ExecStart=/opt/hyperhash/bin/hh-core --config /opt/hyperhash/configs/pool.toml
+Restart=always
+RestartSec=2
+LimitNOFILE=1048576
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target
