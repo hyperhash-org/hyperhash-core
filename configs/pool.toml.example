@@ -1,0 +1,47 @@
+[bitcoind]
+rpc_host = "127.0.0.1"
+rpc_port = 8332
+rpc_user = "CHANGE_ME"
+rpc_pass = "CHANGE_ME"
+network  = "mainnet"
+
+[payout]
+# Put your scriptPubKey hex for bc1... here (use itcoin-cli getaddressinfo)
+script_pubkey_hex = "CHANGE_ME"
+coinbase_tag = "/HyperHash/"
+
+[jobs]
+refresh_ms = 1000
+prebuild_next_jobs = 2
+stale_kill_on_tip = true
+deterministic_extranonce = true
+
+[lanes]
+sv1_listen = "0.0.0.0:3333"
+sv2_listen = "0.0.0.0:34254"
+
+[submitter]
+peers = ["127.0.0.1:8332"]        # add more for parallel submit
+warm_sockets = true
+
+[bus]
+# reserved for future control bus (core <-> edges)
+nats_url = "nats://127.0.0.1:4222"
+
+[flags.infra]
+tipsentry = true
+jobprebuilder = true
+hotpath_notifier = true
+parallel_submitter = true
+rtp = true
+sbs = true
+pbs = true
+
+[flags.hyperlane]
+midstate_reuse = true
+rolltime = "auto"
+zero_gate = true
+rapid_dispatch = true
+aer = true
+vector_validate = "auto"
+dedup_global = true
