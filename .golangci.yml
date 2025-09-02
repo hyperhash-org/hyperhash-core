@@ -1,0 +1,13 @@
+run:
+  timeout: 3m
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - ineffassign
+    - staticcheck
+    - gosimple
+    - revive
+issues:
+  max-same-issues: 0
+  max-issues-per-linter: 0
