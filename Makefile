@@ -4,19 +4,19 @@ PKG := ./cmd/core
 .PHONY: build restart logs fmt lint test
 
 build:
-go build -trimpath -buildvcs=false -o $(BIN) $(PKG)
+	go build -trimpath -buildvcs=false -o $(BIN) $(PKG)
 
 restart:
-sudo systemctl restart hh-core
+	sudo systemctl restart hh-core
 
 logs:
-sudo journalctl -u hh-core -n 50 --no-pager
+	sudo journalctl -u hh-core -n 50 --no-pager
 
 fmt:
-go fmt ./...
+	go fmt ./...
 
 lint:
-golangci-lint run
+	golangci-lint run
 
 test:
-go test ./...
+	go test ./...
