@@ -1,12 +1,12 @@
 [bitcoind]
 rpc_host = "127.0.0.1"
 rpc_port = 8332
-rpc_user = "CHANGE_ME"
-rpc_pass = "CHANGE_ME"
+rpc_user = "hyperhash"           # set the real value on VM
+rpc_pass = "hyperhash_pass_123"  # set the real value on VM
 network  = "mainnet"
 
 [payout]
-# Put your scriptPubKey hex for bc1... here (use itcoin-cli getaddressinfo)
+# Use `bitcoin-cli getaddressinfo` and copy the scriptPubKey
 script_pubkey_hex = "CHANGE_ME"
 coinbase_tag = "/HyperHash/"
 
@@ -21,12 +21,11 @@ sv1_listen = "0.0.0.0:3333"
 sv2_listen = "0.0.0.0:34254"
 
 [submitter]
-peers = ["127.0.0.1:8332"]        # add more for parallel submit
+peers = ["127.0.0.1:8332"]
 warm_sockets = true
 
 [bus]
-# reserved for future control bus (core <-> edges)
-nats_url = "nats://127.0.0.1:4222"
+nats_url = "127.0.0.1:4222"
 
 [flags.infra]
 tipsentry = true
