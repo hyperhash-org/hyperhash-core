@@ -1,0 +1,24 @@
+name: build-core-release
+
+on:
+  push:
+    tags:
+      - 'v*'   # build when we push a version tag
+
+permissions:
+  contents: write  # needed to upload release asset
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+      - name: Build core binary
+        run: go build -trimpath -buildvcs=false -o hh-core ./cmd/core
+      - name: Upload binary to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: hh-core
