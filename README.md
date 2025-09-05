@@ -1,11 +1,16 @@
-# HyperHash Core
+# Hyper Hash — Core
 
-Core services for HyperHash pool:
-- Template provider (GBT + coinbase builder)
-- Job manager (extranonce, dedup, notify)
-- SV1 + SV2 lanes
-- Block submitter
-- Ledger (prop-on-found, 2% fee)
+Core services and libraries for the Hyper Hash mining pool.  
+Provides job management, header generation, and utilities shared across pool, edge, and UI.
 
-**Build model:** systemd-managed binaries, no Docker/K8s.  
-**Deploy:** VM pulls tagged commits, no ad-hoc edits on server.
+## Features
+- Header generation (SV1, SV2, Hyper lanes)
+- Version rolling & deduplication
+- Midstate reuse and optimizations
+- Common config & logging
+
+## Usage
+Imported by:
+- `hyperhash-pool`
+- `hyperhash-edge`
+- `hyperhash-ui`
