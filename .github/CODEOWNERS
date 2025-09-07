@@ -1,0 +1,9 @@
+﻿# CODEOWNERS for hyperhash-core
+# Teams are placeholders; @caldefenwycke guarantees ownership even if teams don’t exist yet.
+
+*                                   @hyperhash-org/core @caldefenwycke
+/cmd/**                             @hyperhash-org/core @caldefenwycke
+/internal/**                        @hyperhash-org/core @caldefenwycke
+/configs/**                         @hyperhash-org/infra @caldefenwycke
+/scripts/**                         @hyperhash-org/infra @caldefenwycke
+/docs/**                            @hyperhash-org/docs @caldefenwycke
