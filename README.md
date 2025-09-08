@@ -1,3 +1,5 @@
+[![CI](https://github.com/hyperhash-org/hyperhash-core/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/hyperhash-org/hyperhash-core/actions/workflows/ci.yml)
+
 # Hyper Hash — Core
 
 Core services and libraries for the Hyper Hash mining pool.  
