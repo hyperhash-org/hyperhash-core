@@ -14,3 +14,15 @@ Imported by:
 - `hyperhash-pool`
 - `hyperhash-edge`
 - `hyperhash-ui`
+
+## Quickstart
+
+### Build
+```bash
+make build
+# or
+go build -o ./bin/hh-core ./cmd/hh-core
+
+### Run
+```bash
+./bin/hh-core
