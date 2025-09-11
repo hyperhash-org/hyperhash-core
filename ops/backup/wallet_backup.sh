@@ -10,12 +10,13 @@ WALLETS=$($CLI listwallets | jq -r '.[]')
 [ -n "$WALLETS" ] || WALLETS="poolhot"
 TS=$(date -u +%Y%m%dT%H%M%SZ)
 for W in $WALLETS; do
-  TMP=$(mktemp -p "$OUTDIR" "${W}-${TS}.XXXX.tmp")
-  sudo -u bitcoin $CLI -rpcwallet="$W" backupwallet "$TMP"
-  OUT="$OUTDIR/${W}-${TS}.dat.gpg"
-  /usr/bin/gpg --batch --yes --symmetric --cipher-algo AES256 --passphrase-file "$PASSPH" -o "$OUT" "$TMP"
+  PLAIN="$OUTDIR/${W}-${TS}.dat"
+  # Write backup directly (dest MUST NOT exist)
+  sudo -u bitcoin $CLI -rpcwallet="$W" backupwallet "$PLAIN"
+  OUT="${PLAIN}.gpg"
+  /usr/bin/gpg --batch --yes --symmetric --cipher-algo AES256 --passphrase-file "$PASSPH" -o "$OUT" "$PLAIN"
   /usr/bin/sha256sum "$OUT" > "$OUT.sha256"
-  /usr/bin/shred -u "$TMP"
+  /usr/bin/shred -u "$PLAIN"
   chmod 600 "$OUT" "$OUT.sha256"
   chown root:root "$OUT" "$OUT.sha256"
   echo "backup: $OUT"
